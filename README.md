@@ -14,6 +14,7 @@ The "StarScout" program is a all-in-one app solution to help streamline the scou
 ## Work In Progress (WIP)
 
 - Convert program to Java for added customization
+- Add integration with the blue Alliance (TBA) for improved data collection
 - Prepare the app for 2025 season and beyond
   
 ---
