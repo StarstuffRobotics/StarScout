@@ -1,6 +1,6 @@
 ## FRC #9403 Starstuff Robotics "StarScout" Program
 
-The "StarScout" program is a all-in-one app solution to help streamline the scouting process and allow for constant improvements.
+The "StarScout" program is a all-in-one app solution to help streamline the scouting process for new and veteran members alike.
 
 ---
 
