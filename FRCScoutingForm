@@ -1,0 +1,178 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class FRCScoutingForm extends JFrame {
+    private Color uncheckedColor = Color.decode("#475672");
+
+    public FRCScoutingForm() {
+        setTitle("FRC Scouting Form");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
+        setLayout(new BorderLayout());
+        getContentPane().setBackground(Color.decode("#000000"));
+
+        JPanel formPanel = new JPanel();
+        formPanel.setLayout(new GridBagLayout());
+        formPanel.setBackground(Color.decode("#000000"));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(5, 10, 5, 10);
+
+        // Add form components
+        formPanel.add(createLabel("Team Number"), gbc);
+        gbc.gridx++;
+        formPanel.add(createTextField(20, 2), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Team Name"), gbc);
+        gbc.gridx++;
+        formPanel.add(createTextField(20, 2), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Photograph of Robot"), gbc);
+        gbc.gridx++;
+        formPanel.add(createButton("Upload"), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Drivetrain"), gbc);
+        gbc.gridx++;
+        formPanel.add(createTextField(20, 2), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Note Scoring Ability"), gbc);
+        gbc.gridx++;
+        formPanel.add(createCheckBoxGroup(new String[]{"AMP", "Speaker", "No Scoring"}), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Able to Defend"), gbc);
+        gbc.gridx++;
+        formPanel.add(createCheckBoxGroup(new String[]{"Yes", "No"}), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Stage Ability"), gbc);
+        gbc.gridx++;
+        formPanel.add(createCheckBoxGroup(new String[]{"Park", "Climb", "Buddy Climb", "Trap"}), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Human Player Preference"), gbc);
+        gbc.gridx++;
+        formPanel.add(createCheckBoxGroup(new String[]{"Source", "AMP"}), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Autonomous Starting Position"), gbc);
+        gbc.gridx++;
+        formPanel.add(createCheckBoxGroup(new String[]{"AMP", "Subwoofer", "Source-Side"}), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Autonomous Actions"), gbc);
+        gbc.gridx++;
+        formPanel.add(createCheckBoxGroup(new String[]{"Speaker", "AMP", "Taxi", "No Autonomous"}), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Note Count"), gbc);
+        gbc.gridx++;
+        formPanel.add(createTextField(20, 2), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Autonomous Notes"), gbc);
+        gbc.gridx++;
+        formPanel.add(createTextField(20, 5), gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        formPanel.add(createLabel("Tele-Op Notes"), gbc);
+        gbc.gridx++;
+        formPanel.add(createTextField(20, 5), gbc);
+
+        JScrollPane scrollPane = new JScrollPane(formPanel);
+        add(scrollPane, BorderLayout.CENTER);
+    }
+
+    private JLabel createLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Ubuntu", Font.BOLD, 14));
+        label.setForeground(Color.decode("#84b4d4"));
+        return label;
+    }
+
+    private JTextField createTextField(int columns, int rows) {
+        JTextField textField = new JTextField(columns);
+        textField.setFont(new Font("Ubuntu", Font.BOLD, 14));
+        textField.setBackground(Color.decode("#000000"));
+        textField.setForeground(Color.decode("#84b4d4"));
+        textField.setBorder(BorderFactory.createLineBorder(Color.decode("#84b4d4")));
+        textField.setMargin(new Insets(5, 5, 5, 5));
+        textField.setPreferredSize(new Dimension(textField.getPreferredSize().width, textField.getPreferredSize().height * rows));
+        return textField;
+    }
+
+    private JButton createButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Ubuntu", Font.BOLD, 14));
+        button.setBackground(Color.decode("#000000"));
+        button.setForeground(Color.decode("#84b4d4"));
+        return button;
+    }
+
+    private JPanel createCheckBoxGroup(String[] options) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        panel.setBackground(Color.decode("#000000"));
+        for (String option : options) {
+            JCheckBox checkBox = new JCheckBox(option);
+            checkBox.setFont(new Font("Ubuntu", Font.BOLD, 14));
+            checkBox.setForeground(Color.decode("#84b4d4"));
+            checkBox.setBackground(Color.decode("#000000"));
+            checkBox.setIcon(new ColorIcon(uncheckedColor, 14, 14));
+            checkBox.setSelectedIcon(new ColorIcon(Color.decode("#84b4d4"), 14, 14));
+            panel.add(checkBox);
+        }
+        return panel;
+    }
+
+    private class ColorIcon implements Icon {
+        private Color color;
+        private int width;
+        private int height;
+
+        public ColorIcon(Color color, int width, int height) {
+            this.color = color;
+            this.width = width;
+            this.height = height;
+        }
+
+        @Override
+        public void paintIcon(Component c, Graphics g, int x, int y) {
+            g.setColor(color);
+            g.fillRect(x, y, getIconWidth(), getIconHeight());
+        }
+
+        @Override
+        public int getIconWidth() {
+            return width;
+        }
+
+        @Override
+        public int getIconHeight() {
+            return height;
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            FRCScoutingForm form = new FRCScoutingForm();
+            form.setVisible(true);
+        });
+    }
+}
