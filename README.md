@@ -20,4 +20,4 @@ The "StarScout" program is a all-in-one app solution to help streamline the scou
 ---
 
 ## Plans for the future
-Currently the StarScout app is for FRC #9403 use only. However, the developer of the app (MacPhearson Strassberg) would like to publish the app in future seasons and make it fully open-source to benefit the wider FRC community and empower teams across the globe to enhance their scouting and strategic planning capabilities.
+Currently the StarScout app is for FRC #9403 use only. However, Starstuff's Scouting Lead would like to publish the app in future seasons and make it fully open-source to benefit the wider FRC community and empower teams across the globe to enhance their scouting and strategic planning capabilities.
